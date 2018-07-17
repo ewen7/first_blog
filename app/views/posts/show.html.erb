@@ -1,0 +1,32 @@
+<div class='panel panel-info'>
+  <div class='panel-heading'>
+     <div class='row'>
+        <div class='col col-xs-1'>
+          <%= image_tag current_user.avatar.url, class: 'avatar' %> <br>
+          <strong><%= link_to @post.user.username, user_posts_path(name: @post.user.username) %></strong> 
+        </div>
+        <div class='col col-xs-11'>
+          <h3> <%=@post.title%> </h3>
+        </div>
+      </div>
+  </div>
+  <div class='panel-body'>
+  	<%= @post.blog_entry %>
+  </div>
+  <div class='panel-footer'>
+  	<i>Created At:</i>  <%= (@post.created_at.localtime).strftime('%w:%M %p %Z %b %e, %Y') %>
+    <p> <i>Updated At:</i> <%= @post.updated_at.localtime.strftime('%w:%M %p %Z %b %e, %Y') %> </p>
+    <%= link_to 'Edit', edit_post_path(@post) %> |
+    <%= link_to 'Back', posts_path %>
+  </div>   
+</div>
+
+<% @post.comments.each do |comment| %>
+	<b><h5><%= link_to comment.user.username, user_posts_path(name: comment.user.username) %></b> 
+  says...</h5>
+	<p style='margin-left:1em'><%= comment.comment_entry %></p>
+<% end %>
+
+<div id="comments">
+	<%= render 'comments/form',comment:@comment %>
+</div>
