@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'jquery-rails'
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap-sass'
 gem 'devise'
 gem 'carrierwave', '~> 1.0'
 gem 'kaminari'
